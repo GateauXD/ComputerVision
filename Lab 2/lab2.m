@@ -52,14 +52,17 @@ for y1 = 1:300
         flipedImage(y1, x1, :) = img1(y2, x2, :);
     end
 end
+imwrite(flipedImage, 'flipped.jpg');
 %Task 5
-downImage = zeros(300, 400, 3, 'uint8');
+downImage = zeros(150, 200, 3, 'uint8');
 
-for x1 = 1:200
-    for y1 = 1:150
-        
+for x1 = 1:400
+    for y1 = 1:300
+        if mod(y1, 2) == 0 && mod(x1,2) == 0
+            x2 = x1/2;
+            y2 = y1/2;
+            downImage(y2, x2,:) = img1(y1,x1,:);
+        end
     end
 end
-
-
-
+imwrite(downImage, 'downscaled.jpg');
