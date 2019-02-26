@@ -1,6 +1,6 @@
 
-img1 = im2double(imread('lena_noisy.jpg'));
-img2 = im2double(imread('lena.jpg'));
+img1 = (imread('lena_noisy.jpg'));
+img2 = (imread('lena.jpg'));
 % 
 % 
 %% Median filter
@@ -12,18 +12,19 @@ imwrite(batch_3, 'median_3.jpg');
 imwrite(batch_5, 'median_5.jpg');
 
 %% Sobel filter
-%H = [1, 2, 1; 0, 0, 0; -1, -2, -1]; % horizontal edge
-H = [1, 0, -1; 2, 0, -2; 1, 0, -1]; % vertical edge
-img_sobel = sobel_filter(img2,H);
+HH = [1, 2, 1; 0, 0, 0; -1, -2, -1]; % horizontal edge
+HV = [1, 0, -1; 2, 0, -2; 1, 0, -1]; % vertical edge
+img_sobel = sobel_filter(img2,HV,3);
 imwrite(img_sobel, 'sobel_v.jpg');
+img_sobel = sobel_filter(img2,HH,3);
+imwrite(img_sobel, 'sobel_h.jpg');
 
 
 %% Gaussian filter
-%hsize = 5; sigma = 2;
-hsize = 9; sigma = 4;
-img_gaussian = gaussian_filter(img1, hsize, sigma);
+hsize5 = 5; sigma5 = 2;
+hsize9 = 9; sigma9 = 4;
+img_gaussian = gaussian_filter(img1, hsize5, sigma5);
+imwrite(img_gaussian, 'gaussian_5.jpg');
+img_gaussian = gaussian_filter(img1, hsize9, sigma9);
 imwrite(img_gaussian, 'gaussian_9.jpg');
 
-%% White Padding
-img_padded = white_padding(img1,3);
-imwrite(img_padded, 'white_padded.jpg');

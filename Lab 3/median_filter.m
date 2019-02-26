@@ -9,7 +9,7 @@ function img_filtered = median_filter(img, patch_size)
             patch = img(y1:y2, x1:x2,:);
             
             value = median(patch(:));
-            img_filtered(u,v,:) = value*255;
+            img_filtered(u,v,:) = value;
         end
     end
 end
