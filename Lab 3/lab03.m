@@ -23,3 +23,7 @@ imwrite(img_sobel, 'sobel_v.jpg');
 hsize = 9; sigma = 4;
 img_gaussian = gaussian_filter(img1, hsize, sigma);
 imwrite(img_gaussian, 'gaussian_9.jpg');
+
+%% White Padding
+img_padded = white_padding(img1,3);
+imwrite(img_padded, 'white_padded.jpg');

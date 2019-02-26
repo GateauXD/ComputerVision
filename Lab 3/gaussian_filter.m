@@ -10,7 +10,7 @@ function img_filtered = gaussian_filter(img, hsize, sigma)
             patch = img(y1:y2, x1:x2,:);
             
             value = dot(patch(:),kernel(:));
-            img_filtered(u,v,:) = value*255;
+            img_filtered(u,v,:) = value*255 ;
         end
     end
 end
