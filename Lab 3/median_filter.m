@@ -1,21 +1,15 @@
 function img_filtered = median_filter(img, patch_size)
-    difference = 1;
-    medianFilter = zeros(512,512,3,'uint8');
-    for x1 = 1:512- difference
-        for y1 = 1:512 -difference
-            medianPixel = zeros(1, 1, 3,'uint8');
-            xrange = x1-difference;
-            xRangeEnd = xrange + patch_size;
-            yrange = y1-difference;
-            yRangeEnd = yrange + patch_size;
-            for meanX1 = xrange:xRangeEnd
-                for meanY1 = yrange:yRangeEnd
-                    medianPixel = medianPixel + img(meanY1, meanX1, :); 
-                end
-            end
-            medianPixel = medianPixel / patch_size;
-            medianFilter(y1,x1,:) = medianPixel;
+    difference = floor(patch_size/2);
+    img_filtered = zeros(512,512,3,'uint8');
+    for u = 1+difference:512-difference
+        for v = 1+difference:512 -difference
+            x1 = v - difference; x2 = v + difference;
+            y1 = u - difference; y2 = u + difference;
+            
+            patch = img(y1:y2, x1:x2,:);
+            
+            value = median(patch(:));
+            img_filtered(u,v,:) = value*255;
         end
     end
-    imwrite(medianFilter, 'medianFilter.jpg');
 end

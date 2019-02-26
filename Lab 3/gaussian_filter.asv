@@ -1,6 +1,6 @@
 function img_filtered = gaussian_filter(img, hsize, sigma)
     kernel = fspecial('gaussian', hsize, sigma);
-    difference = floor(hsize/2);
+    difference = hsize/2;
     img_filtered = zeros(512,512,3,'uint8');
     for u = 1+difference:512-difference
         for v = 1+difference:512-difference
