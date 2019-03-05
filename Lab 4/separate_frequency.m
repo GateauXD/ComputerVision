@@ -2,9 +2,8 @@ function [low_pass_img, high_pass_img] = separate_frequency(img, ratio)
 
     %% apply FFT
     frequency_map = fft2(img);
-    figure, imshow( log(abs(frequency_map) + 1), []);
-    
-    
+    %figure, imshow(log(abs(frequency_map) + 1), []);
+    [height,width,~] = size(img);
     %% shift the frequency map
     frequency_map_shifted = fftshift(frequency_map);
 
@@ -13,7 +12,11 @@ function [low_pass_img, high_pass_img] = separate_frequency(img, ratio)
     %       height = ratio * image height
     %       width = ratio * image width
     %       center of the rectangle is the center of the input image
+    x1 = (width/2) -((width*ratio)/2); x2 = (width/2) +((width*ratio)/2);
+    y1 = (height/2) -((height*ratio)/2); y2 = (height/2)+((height*ratio)/2);
     
+    mask = zeros(size(img));
+    mask(y1:y2, x1:x2, :) = 1;
     
     %% separate low-frequency and high-frequency maps
     low_frequency_map_shifted = frequency_map_shifted .* mask;
@@ -28,6 +31,4 @@ function [low_pass_img, high_pass_img] = separate_frequency(img, ratio)
     high_pass_img = real(ifft2(high_frequency_map)); % change frequency_map to your high-frequency map
     
     %% Save the images
-    imwrite(low_pass_img, 'lena_low_pass.jpg');
-    imwrite(high_pass_img, 'lena_high_pass.jpg');
 end
