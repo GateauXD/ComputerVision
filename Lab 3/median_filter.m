@@ -1,6 +1,6 @@
 function img_filtered = median_filter(img, patch_size)
     difference = floor(patch_size/2);
-    img_filtered = zeros(512,512,3,'uint8');
+   c
     for u = 1+difference:512-difference
         for v = 1+difference:512 -difference
             x1 = v - difference; x2 = v + difference;

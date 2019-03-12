@@ -6,7 +6,10 @@ img = im2double(imread(sprintf('%s.jpg', name)));
 template = im2double(imread('template.jpg'));
 
 %% SSD
-threshold = 10;
+%Edision 1
+threshold = 25;
+%Edision 2
+%threshold = 30;
 [output, match] = template_matching_SSD(img, template, threshold);
 
 figure, imshow(output ./ max(output(:))); title('SSD output');
@@ -17,8 +20,10 @@ imwrite(match, sprintf('%s_ssd_match.jpg', name) );
 
 
 %% Normalized Cross-Correlation
-
-threshold = 1;
+%Edision 1
+%threshold = .5;
+%Edision 2
+threshold = .5;
 [output, match] = template_matching_normcorr(img, template, threshold);
 
 figure, imshow(output ./ max(output(:))); title('NormCorr output');
