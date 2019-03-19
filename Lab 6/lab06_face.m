@@ -14,8 +14,8 @@ for i = 1:num_testing
     img_test = face_testing(:, :, i);
     
     %% convert testing image to feature vector
-    vec_test = img_test(:);
-    %vec_test = multiscale_sobel_feature(img_test, scale);
+    %vec_test = img_test(:);
+    vec_test = multiscale_sobel_feature(img_test, scale);
     
     error = zeros(num_training, 1);
     for j = 1:num_training
@@ -24,8 +24,8 @@ for i = 1:num_testing
         img_train = face_training(:, :, j);
         
         %% convert training image to feature vector
-        vec_train = img_train(:);
-        %vec_train = multiscale_sobel_feature(img_train, scale);
+        %vec_train = img_train(:);
+        vec_train = multiscale_sobel_feature(img_train, scale);
         
         %% compute the square error between feature vectors
         diff = vec_train - vec_test;
@@ -53,20 +53,20 @@ fprintf('Accuracy = %f\n', accuracy);
 %---------------------------------------%
 %   1   |   0.5313
 %---------------------------------------%
-%   2   |   
+%   2   |   0.5500
 %---------------------------------------%
-%   3   |   
+%   3   |   0.5938
 %---------------------------------------%
 %
 % Using gradient orientation as features:
 %---------------------------------------%
 % Scale |  Accuracy
 %---------------------------------------%
-%   1   |   0.5500
+%   1   |   0.5563
 %---------------------------------------%
-%   2   |   
+%   2   |   0.5938
 %---------------------------------------%
-%   3   |   
+%   3   |   0.6063
 %---------------------------------------%
 
 

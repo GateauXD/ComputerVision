@@ -20,8 +20,8 @@ imwrite(e, sprintf('cameraman_edge_threshold_%s.jpg', num2str(threshold)));
 
 
 %% use built-in function to detect edge
-e1 = img; % change img to sobel edge detection
-e2 = img; % change img to canny edge detection
+e1 = edge(img, 'Sobel'); % change img to sobel edge detection
+e2 = edge(img, 'Canny'); % change img to canny edge detection
 
 figure, imshow(e1); title('Sobel Edge');
 figure, imshow(e2); title('Canny Edge');
