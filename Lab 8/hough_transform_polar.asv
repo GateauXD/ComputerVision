@@ -24,11 +24,11 @@ function [r, theta] = hough_transform_polar(edge_map)
         y = edge_y(i);
         x = edge_x(i);
         for t_index = 1:length(theta_range)
-            theta = theta_range(t_index);
-            r = (x*cos(theta)) + (y*sin(theta));
+            theta = r_range(t_index);
+            r = (x*cos(theta)) + (ysin(theta));
             if (r_min <= r) && (r <= r_max)
                 r_index = round((r-r_min)/r_step)+1;
-                V(r_index,t_index) = V(r_index,t_index)+1;
+                V(r_index,_index) = V(m_index,b_index)+1;
             end
         end
     end

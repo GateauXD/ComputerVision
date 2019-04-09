@@ -17,8 +17,18 @@ function [m, b] = hough_transform(edge_map)
     V = zeros(length(m_range), length(b_range));
     
     %% TODO: add votes
-    V(1, 1) = 1; % remove this line
-    
+    for i = 1:length(edge_y)
+        y = edge_y(i);
+        x = edge_x(i);
+        for b_index = 1:length(b_range)
+            b = b_range(b_index);
+            m = (-b/x) + (y/x);
+            if (m_min <= m) && (m <= m_max)
+                m_index = round((m-m_min)/m_step)+1;
+                V(m_index,b_index) = V(m_index,b_index)+1;
+            end
+        end
+    end
     
     
 
