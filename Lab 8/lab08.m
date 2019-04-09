@@ -1,8 +1,8 @@
 
 %% load input image
-%name = 'lines';
+name = 'lines';
 %name = 'bridge';
-name = 'hill';
+%name = 'hill';
 
 img = imread(sprintf('%s.png', name));
 
